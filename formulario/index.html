@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Encuest</title>
+    <link rel="stylesheet" href="styles.css"> 
+  </head>
+  <body>
+    <h1 id="title">Formulario</h1>
+    <p id="description">descripcion</p>
+    <form method="post" id="survey-form">
+      <label for="name" id="name-label"> Nombre
+        <input type="text" id="name" required placeholder="Ingresar tu nombre"/>
+      </label>
+      <label for="email" id="email-label"> Email
+        <input type="email" id="email" required placeholder="Ingresar tu Email"/>
+      </label>
+      <label for="number" id="number-label"> Edad (Opcional)
+        <input id="number" type="number" name="age" min="13" max="120" placeholder="Edad"/>
+      </label>
+      <label for="dropdown"> Cual es la mejor opcion que describe tu rol?
+        <select id="dropdown" name="dropdown" required>
+          <option value="">Seleccionar tu rol de trabajo</option>
+          <option value="1">Estudiante</option>
+          <option value="2">Trabajo tiempo completo</option>
+          <option value="3">Estudiante tiempo completo</option>
+          <option value="4">Prefiero no decir</option>
+          <option value="5">Otros</option>
+        </select>
+      </label>
+      <label> Recomendarias esta pagina?</label>
+      <label>
+        <input type="radio" class="inline" value="1" name="recomendar" /> No
+      </label>
+      <label>
+        <input type="radio" class="inline" value="2" name="recomendar"/> Puede ser
+      </label>
+      <label>
+        <input type="radio" class="inline" value="3" name="recomendar" checked/>SI
+      </label>
+      <label> Como conoces esta pagina? </label>
+      <label>
+        <input type="checkbox" class="inline" value="1"/> Youtube
+      </label>
+      <label>
+        <input type="checkbox" class="inline" value="2"/> Google
+      </label>
+      <label>
+        <input type="checkbox" class="inline" value="3"/> Me lo presentaron
+      </label>
+      <label>
+        <input type="checkbox" class="inline" value="4"/> lo encontre
+      </label>
+      <label>
+       <textarea rows="8" cols="83" placeholder="ingrese un comentario aqui..."></textarea>
+      </label>
+      <label>
+        <input type="submit" id="submit"/>
+      </label>
+    </form>
+  </body>
+<html>

@@ -1,0 +1,50 @@
+body{
+  margin: 0;
+  background-color: lightblue;
+  width: 100%;
+  height: 100vh;
+  font-size:25px;
+}
+
+h1{
+  text-align: center;
+}
+
+p{
+  text-align: center;
+}
+form{
+  width: 100%;
+  max-width: 725px;
+  margin: 0 auto;
+  padding-bottom: 15px;
+  background-color: white;
+  padding-top: 8px;
+}
+
+label {
+  display: block;
+  margin: 20px auto;
+  margin-right: 55px;
+  margin-left: 45px;
+  color: #0081FF;
+}
+
+input, select, textarea{
+  width:100%;
+  margin-top: 5px;
+  height: 30px;
+}
+
+.inline {
+  width: 18px;
+  margin: 0 0;
+  vertical-align: middle;
+}
+
+textarea{
+  height: unset;
+}
+
+
+

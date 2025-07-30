@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentacion Tecnica - HTML y CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>Documentacion Tecnica</header>
+      <a class="nav-link" href="#Introduccion">Introduccion</a>
+      <a class="nav-link" href="#HTML_Basico">HTML_Basico</a>
+      <a class="nav-link" href="#CSS_Basico">CSS_Basico</a>
+      <a class="nav-link" href="#Selectores_y_Especificidad">Selectores_y_Especificidad</a>
+      <a class="nav-link" href="#Diseno_Responsivo">Diseno_Responsivo</a>
+    </nav>
+
+    <main id="main-doc">
+      <section class="main-section" id="Introduccion">
+        <header>Introduccion</header>
+        <p>Esta documentacion tecnica presenta una introduccion a HTML y CSS.</p>
+        <p>Esta orientada a personas que estan empezando en el desarrollo web.</p>
+        <p>HTML es el lenguaje que define la estructura del contenido web.</p>
+        <p>CSS se encarga de definir el aspecto visual del contenido HTML.</p>
+        <p>Ambos lenguajes son esenciales para cualquier desarrollador frontend.</p>
+        <p>Con HTML creamos etiquetas, y con CSS las estilizamos.</p>
+        <p>Esta guia aborda conceptos basicos y algunas practicas recomendadas.</p>
+        <p>Tambien aprenderas sobre la organizacion del codigo y selectores.</p>
+        <p>Se utiliza codigo de ejemplo para facilitar la comprension.</p>
+        <p>Ademas, se muestra como hacer diseños adaptables a distintos dispositivos.</p>
+        <code>&lt;html&gt;...&lt;/html&gt;</code>
+        <code>&lt;body&gt;...&lt;/body&gt;</code>
+      </section>
+
+      <section class="main-section" id="HTML_Basico">
+        <header>HTML_Basico</header>
+        <p>HTML significa HyperText Markup Language.</p>
+        <p>Utiliza etiquetas para describir los elementos del contenido.</p>
+        <p>Algunas etiquetas comunes son: &lt;h1&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;a&gt;.</p>
+        <p>Las etiquetas pueden tener atributos como class o id.</p>
+        <p>Tambien podemos anidar etiquetas para construir estructuras mas complejas.</p>
+        <code>&lt;h1&gt;Titulo principal&lt;/h1&gt;</code>
+        <code>&lt;a href=&quot;#&quot;&gt;Enlace&lt;/a&gt;</code>
+        <ul>
+          <li>Etiqueta &lt;div&gt;: contenedor generico.</li>
+          <li>Etiqueta &lt;img&gt;: para imagenes.</li>
+          <li>Etiqueta &lt;ul&gt; y &lt;li&gt;: listas.</li>
+        </ul>
+      </section>
+
+      <section class="main-section" id="CSS_Basico">
+        <header>CSS_Basico</header>
+        <p>CSS significa Cascading Style Sheets.</p>
+        <p>Se utiliza para aplicar estilos a elementos HTML.</p>
+        <p>Podemos definir colores, fuentes, margenes y mas.</p>
+        <p>Un estilo basico se aplica mediante selectores.</p>
+        <p>Se puede escribir CSS en un archivo externo.</p>
+        <code>body { background-color: #f0f0f0; }</code>
+        <code>h1 { font-size: 2rem; }</code>
+        <ul>
+          <li>Propiedad color</li>
+          <li>Propiedad margin</li>
+          <li>Propiedad padding</li>
+        </ul>
+      </section>
+
+      <section class="main-section" id="Selectores_y_Especificidad">
+        <header>Selectores_y_Especificidad</header>
+        <p>Los selectores permiten apuntar a elementos HTML.</p>
+        <p>Existen selectores de tipo, clase, ID y combinadores.</p>
+        <p>La especificidad define que estilo se aplica si hay conflictos.</p>
+        <p>Un ID tiene mas prioridad que una clase.</p>
+        <p>Tambien es posible usar pseudoclases y pseudoelementos.</p>
+        <code>.boton:hover { background-color: blue; }</code>
+        <code>#cabecera { font-weight: bold; }</code>
+        <ul>
+          <li>Selectores simples</li>
+          <li>Selectores compuestos</li>
+          <li>Especificidad: inline &gt; ID &gt; clase</li>
+        </ul>
+      </section>
+
+      <section class="main-section" id="Diseno_Responsivo">
+        <header>Diseno_Responsivo</header>
+        <p>El diseño responsivo adapta el contenido a diferentes tamaños de pantalla.</p>
+        <p>Se logra principalmente mediante media queries.</p>
+        <p>Tambien se pueden usar unidades relativas como %, vw y vh.</p>
+        <p>Las propiedades flexbox y grid ayudan a distribuir el contenido.</p>
+        <p>Es importante mantener la usabilidad en todos los dispositivos.</p>
+        <code>@media (max-width: 600px) { ... }</code>
+        <code>img { width: 100%; height: auto; }</code>
+        <ul>
+          <li>Mobile first</li>
+          <li>Flexbox</li>
+          <li>Grid</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
