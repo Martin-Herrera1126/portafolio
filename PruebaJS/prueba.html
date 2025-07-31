@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pues algo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      overflow: hidden;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .rainbow-text {
+      position: absolute;
+      z-index: 10;
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 0.5rem;
+      background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s infinite alternate;
+    }
+
+    .letter {
+      display: inline-block;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px rgba(255,255,255,0.2);
+      }
+      to {
+        text-shadow: 0 0 20px rgba(255,255,255,0.8);
+      }
+    }
+
+    /* Contenedor externo para sway horizontal */
+    .balloon-sway {
+      position: absolute;
+      bottom: -60px;
+      animation-name: sway;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      /* Duración se establecerá dinámicamente */
+      cursor: pointer;
+    }
+
+    /* Contenedor interno para subida y escala */
+    .balloon-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation-name: floatUp;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+      /* Duración se establecerá dinámicamente */
+    }
+
+    .balloon {
+      width: 40px;
+      height: 50px;
+      background-color: red;
+      border-radius: 50% 50% 50% 50%;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .string {
+      width: 2px;
+      height: 30px;
+      background: transparent;
+      position: relative;
+    }
+
+    .string::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-left: 2px solid white;
+      border-radius: 50%;
+      animation: wave 1s infinite ease-in-out;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) scale(var(--scale, 1));
+        opacity: 0;
+      }
+    }
+
+    @keyframes sway {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(var(--swayDistance, 10px)); }
+    }
+
+    @keyframes wave {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(5deg); }
+      100% { transform: rotate(0deg); } 
+    }
+
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle 2s ease-in-out forwards;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.5); }
+      100% { opacity: 0; transform: scale(0.5); }
+    }
+
+    /* Confeti */
+    .confetti {
+      position: absolute;
+      width: 6px;
+      height: 10px;
+      background-color: red;
+      opacity: 1;
+      border-radius: 2px;
+      animation-name: confetti-fall, confetti-spin;
+      animation-timing-function: linear, linear;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(120vh) translateX(var(--confettiX, 0));
+        opacity: 0;
+      }
+    }
+
+    @keyframes confetti-spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="rainbow-text" id="feliz-text"></div>
+
+  <script>
+    // Texto para mostrar
+    const texto = [
+      "P R U E B A",
+      "D E",
+      "C O D E O"
+    ];
+
+    const contenedorTexto = document.getElementById("feliz-text");
+
+    texto.forEach((linea, i) => {
+      const divLinea = document.createElement("div");
+
+      const letras = linea.split(" ");
+      letras.forEach((letra) => {
+        const span = document.createElement("span");
+        span.textContent = letra;
+        span.classList.add("letter");
+        divLinea.appendChild(span);
+
+        setTimeout(() => {
+          span.style.opacity = 1;
+        }, Math.random() * 2000 + i * 800);
+      });
+
+      contenedorTexto.appendChild(divLinea);
+    });
+
+    function createBalloon() {
+      // Contenedor sway (movimiento horizontal)
+      const swayContainer = document.createElement("div");
+      swayContainer.classList.add("balloon-sway");
+
+      // Contenedor de subida y escala
+      const balloonContainer = document.createElement("div");
+      balloonContainer.classList.add("balloon-container");
+
+      const balloon = document.createElement("div");
+      balloon.classList.add("balloon");
+
+      const colors = ["red", "yellow", "blue", "green", "orange", "violet", "pink"];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      balloon.style.backgroundColor = color;
+
+      const string = document.createElement("div");
+      string.classList.add("string");
+
+      balloonContainer.appendChild(balloon);
+      balloonContainer.appendChild(string);
+
+      swayContainer.appendChild(balloonContainer);
+
+      // Tamaño aleatorio
+      const size = Math.random() * 30 + 30; // 30 a 60 px
+      balloon.style.width = size + "px";
+      balloon.style.height = size * 1.25 + "px";
+
+      // Posición horizontal random
+      swayContainer.style.left = Math.random() * 100 + "vw";
+
+      // Duración aleatoria para subir (balloonContainer)
+      const floatDuration = (5 + Math.random() * 3).toFixed(1) + "s";
+      balloonContainer.style.animationDuration = floatDuration;
+
+      // Escala ligeramente aleatoria para dar profundidad
+      const scale = (0.8 + Math.random() * 0.4).toFixed(2);
+      balloonContainer.style.setProperty("--scale", scale);
+
+      // Distancia y duración para sway (swayContainer)
+      const swayDistance = (10 + Math.random() * 10) + "px";
+      const swayDuration = (1.5 + Math.random() * 1).toFixed(1) + "s";
+      swayContainer.style.setProperty("--swayDistance", swayDistance);
+      swayContainer.style.animationDuration = swayDuration;
+
+      document.body.appendChild(swayContainer);
+
+      // Evento click para explotar globo
+      swayContainer.addEventListener("click", () => {
+        explodeBalloon(swayContainer, color, size);
+      });
+
+      // Cuando termine la animación de subida (balloonContainer), se elimina todo el swayContainer
+      balloonContainer.addEventListener("animationend", () => {
+        swayContainer.remove();
+      });
+    }
+
+    // Función para crear confetis
+    function createConfetti(x, y, color) {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      confetti.style.backgroundColor = color;
+      confetti.style.left = x + "px";
+      confetti.style.top = y + "px";
+
+      // Movimiento horizontal aleatorio para caída
+      const confettiX = (Math.random() - 0.5) * 100; // de -50px a 50px
+      confetti.style.setProperty("--confettiX", confettiX + "px");
+
+      // Duración random para caída
+      const duration = (2 + Math.random() * 2).toFixed(1) + "s";
+      confetti.style.animationDuration = `${duration}, ${duration}`;
+
+      document.body.appendChild(confetti);
+
+      // Quitar confetti después de la animación
+      confetti.addEventListener("animationend", () => {
+        confetti.remove();
+      });
+    }
+
+    // Función para explotar globo y soltar confetis
+    function explodeBalloon(balloonElement, color, size) {
+      // Animación de explosión rápida: agrandar y desaparecer
+      const balloon = balloonElement.querySelector(".balloon");
+      const string = balloonElement.querySelector(".string");
+
+      balloon.style.transition = "transform 0.3s ease, opacity 0.3s ease";
+      balloon.style.transform = "scale(2.5)";
+      balloon.style.opacity = "0";
+      string.style.opacity = "0";
+
+      // Crear confetis en la posición del globo
+      const rect = balloon.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      // Generar varios confetis (10)
+      for(let i = 0; i < 15; i++) {
+        createConfetti(centerX, centerY, color);
+      }
+
+      // Esperar que termine la transición para eliminar el globo
+      setTimeout(() => {
+        balloonElement.remove();
+      }, 350);
+    }
+
+    // Crear globos continuamente
+    setInterval(createBalloon, 900);
+
+  </script>
+</body>
+</html>
